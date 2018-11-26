@@ -1,6 +1,6 @@
 import React from 'react'
 
-import CmtItems from './CmtItems'
+import CmtItems from '@/components/CmtItems'
 
 // 使用 class 关键字，定义父组件
 export default class CmtList extends React.Component {
