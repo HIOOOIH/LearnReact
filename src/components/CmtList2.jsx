@@ -1,6 +1,16 @@
 import React from 'react'
 
-import CmtItems from '@/components/CmtItems'
+import CmtItems from '@/components/CmtItems2'
+
+// 导入列表需要的样式表
+// Q1: 这个样式表是只在 List 组件中生效吗？
+// A1: 直接导入 css 样式表，默认是在全局上，这个项目都生效的
+// Q2: Vue 组件中的样式表，有没有冲突的问题？
+// A2: 也有同样的问题，但是可以使用 <style scoped></style>
+// Q3: React 中，有没有类似于 scoped 这样的指令呢？
+// A3: 没有，因为在 React 中，没有指令的概念
+import cssobj from '@/css/cmtlist.css'
+console.log(cssobj)
 
 // 使用 class 关键字，定义父组件
 export default class CmtList extends React.Component {
@@ -19,12 +29,7 @@ export default class CmtList extends React.Component {
 
     render() {
         return <div>
-            {/* 注意：在 JSX 中，如果想写 行内样式，不能为 style 设置 字符串的值 */}
-            {/* 而是应写为 style:{ { color: 'red } } */}
-            {/* <h1 style="color:red;">这是评论列表组件</h1> */}
-            {/* 在 行内样式中，如果是数值类型的样式，则可以不用引号包裹；如果是字符串类型的，必须使用引号包裹 */}
-            <h1 style={{ color: 'red', fontSize: '35px', zIndex: 3, fontWeight: 200, textAlign: 'center' }}>这是评论列表组件</h1>
-
+            <h1 className={cssobj.title}>这是评论列表组件</h1>
             {this.state.CommentList.map(item => <CmtItems {...item} key={item.id}></CmtItems>)}
         </div>
     }

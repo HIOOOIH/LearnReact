@@ -21,7 +21,12 @@ module.exports = {
         // 第三方匹配规则
         rules:[
             // 千万不能忘记添加 exclude 排除项
-            { test: /\.js|jsx$/, use: 'babel-loader', exclude: /node_modules/ }
+            { test: /\.js|jsx$/, use: 'babel-loader', exclude: /node_modules/ },
+            // 打包处理 CSS 样式表的第三方 loader，从后往前处理，css-loader => style-loader
+            // 可以在 css-loader 之后，通过 ? 追加参数
+            // 其中，有个固定的参数，叫做 modules,表示为 普通的 CSS 样式表，启用模块化
+            { test:/\.css$/, use: ['style-loader', 'css-loader?modules'] },
+            // { test:/\.jpg|png|gif|bmp$/, use: 'url-loader' }
         ]
     },
     resolve:{
