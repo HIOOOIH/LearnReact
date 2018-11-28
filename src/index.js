@@ -5,11 +5,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import CmtList from '@/components/CmtList2'
+// import CmtList from '@/components/CmtList2'
+
+ import BindEvent from '@/components/BindEvent'
+
 
 // 3. 调用 render 函数渲染
 ReactDOM.render(
     <div>
-        <CmtList></CmtList>
+        <BindEvent></BindEvent>
     </div>,document.getElementById("app")
 );
