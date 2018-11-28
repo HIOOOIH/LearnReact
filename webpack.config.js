@@ -24,8 +24,10 @@ module.exports = {
             { test: /\.js|jsx$/, use: 'babel-loader', exclude: /node_modules/ },
             // 打包处理 CSS 样式表的第三方 loader，从后往前处理，css-loader => style-loader
             // 可以在 css-loader 之后，通过 ? 追加参数
-            // 其中，有个固定的参数，叫做 modules,表示为 普通的 CSS 样式表，启用模块化
-            { test:/\.css$/, use: ['style-loader', 'css-loader?modules'] },
+            // 其中，有个固定的参数，叫做 modules,表示为 SCSS 样式表，启用模块化
+            { test:/\.css$/, use: ['style-loader', 'css-loader'] },
+            { test:/\.scss$/, use: ['style-loader', 'css-loader?modules&localIdentName=[path][name]-[local]-[hash:5]','sass-loader'] },
+            { test:/\.ttf|woff2|woff|eot|svg$/, use: 'url-loader' },   // 打包处理字体文件的 loader         
             // { test:/\.jpg|png|gif|bmp$/, use: 'url-loader' }
         ]
     },

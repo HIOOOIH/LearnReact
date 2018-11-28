@@ -1,6 +1,7 @@
 import React from 'react'
 
-import cssobj from '@/css/cmtitem.css'
+import cssobj from '@/css/cmtitem.scss'
+console.log(cssobj)
 
 // 使用 function 构造函数，定义普通的无状态组件
 export default function CmtItems(props) {
