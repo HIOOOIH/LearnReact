@@ -1,10 +1,14 @@
-
 import React from 'react'
 
 export default class BindEvent extends React.Component {
     constructor(){
         super()
-        this.state = {}
+        this.state = {
+            msg: '哈哈',
+            name: 'zs',
+            age: 22,
+            gender: '男'
+        }
     }
 
     render(){
@@ -12,7 +16,27 @@ export default class BindEvent extends React.Component {
             {/* 需求：点击按钮，修改 msg 的值 */}
             <button onClick={ ()=>this.show('哈哈','嘻嘻') }>按钮</button>
             <h3>{this.state.msg}</h3>
+
+            {/* 如果 我们只是把 文本框的 value 属性，绑定到了 state 状态，但是，如果不提供 onChange 处理函数的话，得到的文本框，将会是一个只读的文本框 */}
+
+            {/* 当 为 文本框绑定 value 值以后，要么同时提供一个 readOnly,要么，提供一个 onChange 处理函数 */}
+            {/* <input type="text" style={{ width:'100%' }} value={this.state.msg} readOnly /> */}
+            <input type="text" style={{ width:'100%' }} value={this.state.msg} onChange={(e) => this.txtChanged(e)} ref='txt'/>
         </div>
+    }
+
+    txtChanged = (e)=>{
+       
+        // 在 onChange 事件中，获取文本框的值，有两种方案：
+        // 方案1： 通过事件参数 e 来获取
+        // console.log(e.target.value)
+        //console.log(this.refs.txt.value)
+
+        const newVal = e.target.value
+
+        this.setState({
+            msg: newVal
+        })
     }
 
     show = (arg1, arg2)=>{

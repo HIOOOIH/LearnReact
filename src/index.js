@@ -7,12 +7,12 @@ import ReactDOM from 'react-dom';
 
 // import CmtList from '@/components/CmtList2'
 
- import BindInputValue from '@/components/BindInputValue'
+import BindEvent from '@/components/BindInputValue'
 
 
 // 3. 调用 render 函数渲染
 ReactDOM.render(
     <div>
-        <BindInputValue></BindInputValue>
+        <BindEvent></BindEvent>
     </div>,document.getElementById("app")
 );
